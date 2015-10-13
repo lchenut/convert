@@ -6,7 +6,7 @@
 /*   By: lchenut <lchenut@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/10/12 09:50:14 by lchenut           #+#    #+#             */
-/*   Updated: 2015/10/12 18:24:04 by lchenut          ###   ########.fr       */
+/*   Updated: 2015/10/13 15:32:22 by lchenut          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ int		fill_header(t_conv *conv)
 	int i = read(conv->fdr, garbage, offset);
 	printf("%i\n", i);
 	conv->width = *((int *)garbage);
-	conv->bmp_type = *((int *)(garbage + 10));
+	conv->bmp_type = *((short *)(garbage + 10));
 	write(conv->fdw, garbage, 8);
 	write(conv->fdw, info_1B, sizeof(info_1B));
 	printf("-- %i -- %i --\n", conv->bmp_type, conv->width);
@@ -70,15 +70,18 @@ void	fill_content_32(t_conv *conv)
 			ncp++;
 		}
 		wid++;
-		if ((conv->width % 4) && wid == conv->width)
+		if (wid == conv->width)
 		{
-			write(conv->fdw, &cpy, 1);
-			cpy = 0xFF;
-			cpt = 7;
-			while (!(++ncp % 16))
+			printf("--jesuisici\n");
+			if (cpt != 7)
+			{
 				write(conv->fdw, &cpy, 1);
-			wid ^= wid;
-		}	
+				cpy = 0xFF;
+				cpt = 7;
+				ncp++;
+			}
+			wid = 0;
+		}
 	}
 }
 

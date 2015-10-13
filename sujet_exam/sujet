@@ -1,0 +1,15 @@
+Le but de cet exercice est de rendre un programme qui prend en argument une
+image bitmap 1 bit (cf: format_bitmap) sur laquelle il y a un chiffre et qui
+écrit le chiffre en question sur la sortie standard.
+
+$> open 42.bmp
+$> ./ocr 42.bmp
+42
+$> ./ocr 0123456789.bmp
+123456789
+
+L'image bitmap sera toujours bien formattée, et n'aura pas de bruit.
+Le chiffre sur l'image sera toujours positif et inférieur à la limite d'un int.
+Chaque nombre sur l'image seront bien séparés des autres nombres.
+
+Fonctions autorisées: write, read, open, close, malloc, free

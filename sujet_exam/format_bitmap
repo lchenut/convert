@@ -1,0 +1,36 @@
+Description ridiculement courte du header d'une image bitmap 1 bit:
+
+ 2 bytes |   Magic number  | "BM" ; format bitmap quoi
+ 4 bytes |  Size of image  | Un entier avec la taille de l'image.
+ 4 bytes |     Garbage     | Pas vraiment important
+ 4 bytes |  Size of header | Taille du header avant lequel la description des pixels de l'image commence.
+ 4 bytes |     Garbage     | Pas vraiment important
+ 4 bytes |   Size of width | Un entier avec la taille de la largeur de l'image
+ 4 bytes |  Size of height | Un entier avec la taille de la hauteur de l'image
+36 bytes |     Garbage     | Pas vraiment important
+62 bytes |      TOTAL      | Taille totale du header.
+
+Trois points important pour la suite.
+
+1°) Chaque bit de l'image, à partir de ce moment, correspond à un pixel, ainsi,
+si le premier caractère est '\0', sur l'image, ça représentera 8 pixels noirs.
+
+2°) La description des pixels commence par la première ligne de l'image en
+commençant par le bas.
+
+3°) Le meilleur pour la fin. La description de chaque ligne de pixel doit
+contenir N bytes tel que N % 4 == 0.
+Ainsi, vu qu'un exemple est plus explicite que de longues explications:
+Imaginons une image avec, de bas en haut, 8 pixels blancs puis 8 pixels noirs.
+La description de l'image ressemblera à:
+11111111      [ 00000000 00000000 00000000 ] <= padding
+^^^^^^^^
+pixels blancs
+
+00000000      [ 00000000 00000000 00000000 ] <= padding
+^^^^^^^^
+pixels noirs
+
+soit \xff\x00\x00\x00\x00\x00\x00\x00
+     ^^^^            ^^^^
+	 8 blancs        8 noirs
