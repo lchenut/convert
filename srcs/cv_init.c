@@ -6,7 +6,7 @@
 /*   By: lchenut <lchenut@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/10/12 14:01:05 by lchenut           #+#    #+#             */
-/*   Updated: 2015/10/12 16:29:09 by lchenut          ###   ########.fr       */
+/*   Updated: 2015/10/15 15:51:20 by lchenut          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ static void	get_help(char *av)
 	exit(0);
 }
 
-static void	get_brightness(char **av, int *index, t_conv *conv)
+static void	check_option(char **av, int *index, t_conv *conv)
 {
 	int		percent;
 
@@ -91,7 +91,7 @@ void		cv_init(int ac, char **av, t_conv *conv)
 
 	if (ac == 1)
 		get_help(av[0]);
-	get_brightness(av, &index, conv);
+	check_option(av, &index, conv);
 	is_bmp = strrchr(av[index], '.');
 	if (!is_bmp || (is_bmp && strcmp(is_bmp, ".bmp")))
 		get_usage(av[0]);

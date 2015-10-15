@@ -6,7 +6,7 @@
 #    By: lchenut <lchenut@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/10/12 10:07:21 by lchenut           #+#    #+#              #
-#    Updated: 2015/10/12 16:15:27 by lchenut          ###   ########.fr        #
+#    Updated: 2015/10/15 17:17:47 by lchenut          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,8 +20,10 @@ OBJS_DIR	= objs
 SRCS_DIR	= srcs
 INCS_DIR	= incs
 
-SRCS		= convert.c		\
-			  cv_init.c
+SRCS		= convert.c				\
+			  cv_init.c				\
+			  fill_content_32.c		\
+			  fill_content_24.c		\
 
 S			= $(addprefix $(SRCS_DIR)/, $(notdir $(SRCS:.c=.o)))
 OBJS		= $(addprefix $(OBJS_DIR)/, $(notdir $(SRCS:.c=.o)))

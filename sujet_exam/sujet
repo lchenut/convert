@@ -10,6 +10,6 @@ $> ./ocr 0123456789.bmp
 
 L'image bitmap sera toujours bien formattée, et n'aura pas de bruit.
 Le chiffre sur l'image sera toujours positif et inférieur à la limite d'un int.
-Chaque nombre sur l'image seront bien séparés des autres nombres.
+Chaque nombre sur l'image sera bien séparés des autres nombres.
 
 Fonctions autorisées: write, read, open, close, malloc, free

@@ -6,7 +6,7 @@
 /*   By: lchenut <lchenut@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/10/12 10:12:33 by lchenut           #+#    #+#             */
-/*   Updated: 2015/10/12 16:00:57 by lchenut          ###   ########.fr       */
+/*   Updated: 2015/10/15 17:18:09 by lchenut          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@
 #include <ctype.h>
 #include <sys/types.h>
 #include <sys/uio.h>
+#include <sys/stat.h>
 #include <unistd.h>
 
 typedef struct	s_convert
@@ -39,5 +40,7 @@ typedef struct s_head
 }				t_head;
 
 void			cv_init(int ac, char **av, t_conv *conv);
+void			fill_content_32(t_conv *conv);
+void			fill_content_24(t_conv *conv);
 
 #endif
